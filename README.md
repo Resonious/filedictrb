@@ -1,8 +1,8 @@
 # Filedictrb
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/filedictrb`. To experiment with that code, run `bin/console` for an interactive prompt.
+Ruby wrapper for [filedict](https://github.com/Resonious/filedict).
 
-TODO: Delete this and the text above, and describe your gem
+The idea is the provide an interface that behaves exactly like a `Hash<Set<String>>`.
 
 ## Installation
 
