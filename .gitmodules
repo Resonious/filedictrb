@@ -1,0 +1,3 @@
+[submodule "ext/filedict"]
+	path = ext/filedict
+	url = git@github.com:Resonious/filedict

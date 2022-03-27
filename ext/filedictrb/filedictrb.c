@@ -1,9 +1,11 @@
 #include "filedictrb.h"
+#include "hash.h"
 
-VALUE rb_mFiledictrb;
+VALUE mFiledict;
 
 void
 Init_filedictrb(void)
 {
-  rb_mFiledictrb = rb_define_module("Filedictrb");
+    mFiledict = rb_define_module("Filedict");
+    fdrb_init_hash();
 }
