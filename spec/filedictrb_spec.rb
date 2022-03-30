@@ -26,4 +26,13 @@ RSpec.describe Filedict do
     hash['test key'].add 'test value'
     expect(hash['test key']).to include 'test value'
   end
+
+  it 'lets me read from another instance' do
+    hash1 = Filedict::Hash.new('tmp/test.fdict')
+    hash2 = Filedict::Hash.new('tmp/test.fdict')
+
+    hash1['test key'].add 'test value!'
+    hash1['test key'].add 'yet another'
+    expect(hash2['test key']).to eq Filedict::Set['test value!', 'yet another']
+  end
 end
