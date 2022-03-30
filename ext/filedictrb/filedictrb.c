@@ -4,7 +4,7 @@
 VALUE mFiledict;
 
 void
-Init_filedict(void)
+Init_filedictrb(void)
 {
     mFiledict = rb_define_module("Filedict");
     fdrb_init_hash();

@@ -2,4 +2,4 @@
 
 require "mkmf"
 
-create_makefile("filedict/filedict")
+create_makefile("filedictrb/filedictrb")
