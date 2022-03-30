@@ -2,7 +2,9 @@
 
 Ruby wrapper for [filedict](https://github.com/Resonious/filedict).
 
-The idea is the provide an interface that behaves exactly like a `Hash<Set<String>>`.
+The idea is the provide an interface that behaves exactly like a `Hash<Set<String>>`, but the data is bound to a file. The file is memory-mapped, and so it is shared across processes, and updates are flushed automatically by the operating system.
+
+As of writing, this gem is still brand new, not production-ready. I'm pretty sure you'll get a segfault if you use non-string keys or values.
 
 ## Installation
 
@@ -22,7 +24,17 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+You can use `Filedict::Hash` almost just like a regular `Hash`.
+
+```ruby
+dict = Filedict::Hash.new('path/to/data/file')
+dict['key'].add 'value'
+
+dict['key'] # should equal Filedict::Set['value']
+
+# if another process comes along and appends 'value 2', then ...
+dict['key'] # should equal Filedict::Set['value', 'value 2']
+```
 
 ## Development
 
