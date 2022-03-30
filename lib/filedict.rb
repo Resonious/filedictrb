@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative "filedict/version"
-require_relative "filedict/filedict"
+require_relative 'filedict/version'
+require_relative 'filedictrb/filedict'
 
 module Filedict
   class Error < StandardError; end
