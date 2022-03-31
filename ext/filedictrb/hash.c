@@ -3,7 +3,6 @@
 
 extern VALUE mFiledict;
 VALUE cHash;
-VALUE mSetExt;
 VALUE cSet;
 
 ID id_add;
@@ -89,7 +88,7 @@ static VALUE fd_set_add(int argc, VALUE *argv, VALUE self) {
     VALUE fd_hash_ruby_object = rb_ivar_get(self, id_fd_hash);
 
     if (fd_hash_ruby_object == Qnil) {
-        return self;
+        return rb_call_super(argc, argv);
     }
 
     fd_hash_t *fd_hash = RTYPEDDATA_DATA(fd_hash_ruby_object);
@@ -124,8 +123,6 @@ static VALUE fd_hash_access(VALUE self, VALUE key) {
     rb_ivar_set(result, id_fd_hash, self);
     rb_ivar_set(result, id_fd_key, key);
 
-    rb_extend_object(result, mSetExt);
-
     return result;
 }
 
@@ -139,9 +136,8 @@ void fdrb_init_hash() {
 
     VALUE rb_cSet = rb_define_class("Set", rb_cObject);
     cSet = rb_define_class_under(mFiledict, "Set", rb_cSet);
-    mSetExt = rb_define_module_under(mFiledict, "SetExt");
 
-    rb_define_method(mSetExt, "add", fd_set_add, -1);
+    rb_define_method(cSet, "add", fd_set_add, -1);
 
     id_add = rb_intern("add");
     id_remove = rb_intern("remove");
